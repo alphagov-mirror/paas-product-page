@@ -29,7 +29,7 @@ class App < Sinatra::Base
 		:default_src => "none",
 		:script_src => "'self' www.google-analytics.com",
 		:style_src => "'self' 'unsafe-inline'",
-		:img_src => "'self' www.google-analytics.com",
+		:img_src => "'self' prometheus-charts.leeporte.dev.cloudpipelineapps.digital www.google-analytics.com",
 		:connect_src => "'self' www.google-analytics.com",
 		:frame_src => "'self'",
 		:font_src => "'self' data:",

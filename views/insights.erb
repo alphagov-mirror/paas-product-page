@@ -1,0 +1,20 @@
+<% content_for :head do %>
+	<title>insights - <%= settings.title %></title>
+<% end %>
+
+<% content_for :breadcrumb do %>
+	<%== erb :'partials/_breadcrumb', :locals => {name: 'Insights', href: request.path_info, active: true} %>
+<% end %>
+
+<div class="container">
+	<div class="grid-row">
+			<h2 class="heading-medium">Buildpack usage</h2>
+			<img src="https://prometheus-charts.leeporte.dev.cloudpipelineapps.digital/pie.svg?query=sum(cf_application_info)%20by%20(buildpack)&width=500&height=500" alt="Buildpack usage graph">
+
+			<h2 class="heading-medium">Service usage</h2>
+			<img src="https://prometheus-charts.leeporte.dev.cloudpipelineapps.digital/pie.svg?query=sum(cf_service_info)%20by%20(service_label)&width=500&height=500" alt="Service usage graph">
+
+			<h2 class="heading-medium">Number of applications running</h2>
+			<img src="https://prometheus-charts.leeporte.dev.cloudpipelineapps.digital/pie.svg?query=sum(cf_application_info)%20by%20(state)&width=500&height=500" alt="Application state graph">
+	</div>
+</div>

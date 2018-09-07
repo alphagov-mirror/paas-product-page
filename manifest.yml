@@ -1,0 +1,18 @@
+---
+applications:
+- name: paas-product-page
+  buildpack: ruby_buildpack
+  path: .
+  memory: 256M
+  instances: 2
+  env:
+    APP_ENV: production
+    ZENDESK_USER: "None"
+    ZENDESK_TOKEN: "None"
+    ZENDESK_URL: 'https://govuk.zendesk.com/api/v2'
+    ZENDESK_GROUP_ID: 360000031809
+- name: paas-product-page-redirect
+  buildpack: staticfile_buildpack
+  path: ./redirect
+  memory: 32M
+  instances: 2
