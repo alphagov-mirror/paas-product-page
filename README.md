@@ -33,7 +33,7 @@ To start the server locally in development mode:
 ```
 ZENDESK_USER='REDACTED' \
 ZENDESK_TOKEN='REDACTED' \
-ZENDESK_URL=https://account.zendesk.com/api/v2 \
+ZENDESK_URL=https://govuk.zendesk.com/api/v2 \
 ZENDESK_GROUP_ID=123456789 \
 make dev
 ```
@@ -63,4 +63,3 @@ $ ./release/push
 
 Note: you will need the correct PaaS permissions as well as target your
 desired organisation and space.
-
