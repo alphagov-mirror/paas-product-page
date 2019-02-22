@@ -23,12 +23,16 @@
 				<li>It’s resilient since it operates across three independent availability zones</li>
 				<li>It’s built on an open source PaaS platform (Cloud Foundry)</li>
 				<li>You can decide to move to other Cloud Foundry-based PaaS providers, including on GCloud, as you’re not locked into our platform</li>
+				<li>It's best suited for <a href="https://12factor.net/">Twelve-Factor</a> App development</li>
 			</ul>
 			<h2 class="heading-medium">Security</h2>
 			<ul class="list list-bullet">
 				<li>It’s accredited for handling personal and confidential information classified as Official</li>
-				<li>It allows SSH access to containers</li>
+				<li>Modern TLS standards are enforced for all traffic entering the platform</li>
+				<li>Traffic inside the platform is protected by industry standard, strong IPsec encryption</li>
 				<li>Applications running on the platform are isolated from each other so they can’t read or change each other's code, data or logs</li>
+				<li>Applications can communicate internally via a private network</li>
+				<li>Authorised developers have SSH access to application containers to debug problems</li>
 			</ul>
 			<p class="content-section__body">
 				<a href="/security">Read more about how we keep GOV.UK PaaS secure</a>
@@ -54,11 +58,12 @@
 				<li>Elasticsearch</li>
 			</ul>
 
-			<h2 class="heading-medium">Provisioning</h2>
+			<h2 class="heading-medium">Self-service Provisioning</h2>
 			<ul class="list list-bullet">
 				<li>It takes a few minutes to create sandbox and testing environments, and even less to delete them once you don’t need them anymore</li>
 				<li>Set up a new DB or service in minutes with the CloudFoundry command line or an API: no tickets or requests required</li>
 				<li>Service teams can grow their service from prototype to production without replatforming</li>
+				<li>A pricing calculator is available to anticipate ongoing costs, and to assist with planning for scaling apps</li>
 			</ul>
 			<h2 class="heading-medium">Deploying and running apps</h2>
 			<ul class="list list-bullet">
@@ -66,13 +71,14 @@
 				<li>Scale applications up and down in seconds</li>
 				<li>Use private applications to deploy microservices that are not accessible from the public internet</li>
 				<li>You can build on the API or the command line to enable auto-scaling</li>
-				<li>Deploy from CI services such as Travis or Jenkins</li>
+				<li>Deploy from CI services such as Travis, Jenkins or Concourse</li>
 				<li>Use a custom domain to host your app</li>
 			</ul>
 			<h2 class="heading-medium">Performance</h2>
 			<ul class="list list-bullet">
 				<li>You can check the status of the platform on our <a href="https://status.cloud.service.gov.uk/">system status page</a></li>
 				<li>Application logs can be streamed to SaaS logging platforms if service teams need to monitor app-specific performance metrics</li>
+				<li>Service metrics can be captured from backing services</a></li>
 			</ul>
 
 			<h2 class="heading-medium">Support and maintenance</h2>
