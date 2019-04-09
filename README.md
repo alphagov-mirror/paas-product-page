@@ -48,7 +48,7 @@ make dev
 ## Deploying changes
 
 This application should not be manually deployed to production. A pipeline
-in [alphagov/paas-release-ci][https://github.com/alphagov/paas-release-ci]
+in [alphagov/paas-release-ci](https://github.com/alphagov/paas-release-ci)
 will automatically deploy changes to the `master` branch.
 
 You may wish to manually deploy this application to a different
