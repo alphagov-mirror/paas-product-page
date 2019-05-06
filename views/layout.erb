@@ -34,7 +34,6 @@
 					</span>
 					<span class="header__title">
 						Platform as a Service
-						<span class="phase-banner">Beta</span>
 					</span>
 				</a>
 			</div>
@@ -51,7 +50,8 @@
 						'Features' => '/features',
 						'Pricing' => '/pricing',
 						'Documentation' => 'https://docs.cloud.service.gov.uk',
-						'Support' => '/support'
+						'Support' => '/support',
+						'Sign in' => '/sign-in',
 					}.each do |title, url| %>
 						<li<% if url == request.path_info %> class="active"<% end %>>
 							<a href="<%= url == request.path_info ? "#main" : url %>">

@@ -1,0 +1,68 @@
+<% content_for :head do %>
+	<title><%= settings.title %></title>
+<% end %>
+
+<div class="container">
+
+	<section class="content-section">
+		<div class="grid-row">
+			<div class="column-full">
+        <form method="POST">
+          <div class="form-group">
+            <fieldset>
+              <legend>
+                <h1 class="heading-xlarge">Choose your region</h1>
+              </legend>
+
+              <div class="multiple-choice">
+                <input id="region-london"
+                       name="region"
+                       type="radio"
+                       checked
+                       value="london">
+                <label for="region-london">
+                  <span style="font-weight: 700;">London</span>
+                  <span class="form-hint">
+                  Apps without a custom domain end with
+                  <code>london.cloudapps.digital</code>.
+                  </span>
+                </label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="region-ireland"
+                       name="region"
+                       type="radio"
+                       value="ireland">
+                <label for="region-ireland">
+                  <span style="font-weight: 700;">Ireland</span>
+                  <span class="form-hint">
+                    Apps without a custom domain end with
+                    <code>cloudapps.digital</code>.
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="form-group">
+            <button class="button">Continue</button>
+          </div>
+        </form>
+      </div>
+
+			<div class="column-full">
+        <h2 class="heading-large">
+          Use the Command Line
+        </h2>
+        <p class="content-section__body">
+          If you need help accessing GOV.UK PaaS from the
+          command-line interface, take a look at our
+          <a href="https://docs.cloud.service.gov.uk/get_started.html#set-up-the-cloud-foundry-command-line">technical
+        documentation</a>.
+				</p>
+      </div>
+
+		</div>
+	</section>
+
+</div>
