@@ -2,6 +2,10 @@
 	<title><%= settings.title %></title>
 <% end %>
 
+<% content_for :breadcrumb do %>
+	<%== erb :'partials/_breadcrumb', :locals => {name: 'Sign in', href: request.path_info, active: true} %>
+<% end %>
+
 <div class="container">
 
 	<section class="content-section">
