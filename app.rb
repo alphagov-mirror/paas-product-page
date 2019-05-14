@@ -132,9 +132,9 @@ class App < Sinatra::Base
 	post '/sign-in' do
 		case params[:region]
 		when 'london'
-			redirect('https://login.london.cloud.service.gov.uk/login', 302)
+			redirect('https://admin.london.cloud.service.gov.uk/', 302)
 		when 'ireland'
-			redirect('https://login.cloud.service.gov.uk/login', 302)
+			redirect('https://admin.cloud.service.gov.uk/', 302)
 		else
 			erb :'sign-in'
 		end
