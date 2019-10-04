@@ -16,7 +16,7 @@ gem "sprockets-helpers", "~> 1.2"
 gem "sass", "~> 3.5"
 gem "capybara", "~> 2.15"
 gem "rake", "~> 12.1"
-gem "nokogiri", "~> 1.8.5"
+gem "nokogiri", "~> 1.10.4"
 
 # Added at 2017-10-27 14:53:36 +0100 by chrisfarmiloe:
 gem "erubis", "~> 2.7"
