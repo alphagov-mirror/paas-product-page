@@ -46,9 +46,9 @@ RSpec.describe "Signup", :type => :feature do
 		}
 	end
 
-  %w(net uk).each do |tld|
-    it "should submit the form successfully with an nhs.#{tld} email" do
-      email = "jane@nhs.#{tld}"
+  %w(nhs.net nhs.uk mod.uk).each do |tld|
+    it "should submit the form successfully with an #{tld} email" do
+      email = "jane@#{tld}"
 
       visit '/signup'
       fill_in('person_name', with: 'Jane Janedóttir')
@@ -81,7 +81,7 @@ RSpec.describe "Signup", :type => :feature do
         expect(data["ticket"]).to include("comment")
         expect(data["ticket"]["comment"]).to include("body")
         expect(data["ticket"]["comment"]["body"]).to include("From: Jane Janedóttir")
-        expect(data["ticket"]["comment"]["body"]).to match(/Email: jane@nhs.(uk|net)/)
+        expect(data["ticket"]["comment"]["body"]).to match(/Email: jane@#{tld}/)
         expect(data["ticket"]["comment"]["body"]).to include("Email: #{email}")
         expect(data["ticket"]["comment"]["body"]).to include("Department: TestDept")
         expect(data["ticket"]["comment"]["body"]).to include("Team/Service: TestService")
