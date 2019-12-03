@@ -1,0 +1,316 @@
+<% content_for :head do %>
+	<title>Cloud Security Principles - <%= settings.title %></title>
+<% end %>
+
+<% content_for :breadcrumb do %>
+	<%== erb :'partials/_breadcrumb', :locals => {name: 'Features, roadmap and security', href: request.path_info, active: true} %>
+<% end %>
+
+<div class="container">
+	<div class="grid-row">
+
+		<div class="column-one-third">
+			<%== erb :'partials/_subnav', :locals => {active: 'cloud-security-principles'} %>
+		</div>
+
+
+		<div class="column-two-thirds">
+			<h1 class="heading-xlarge">How GOV.UK PaaS meets the NCSC Cloud Security Principles</h1>
+
+			<p>The <a href="https://www.ncsc.gov.uk/">National Cyber Security Centre (NCSC)</a> provides a unified source of advice, guidance and support on cyber security for both government and industry.</p>
+            
+            <p>GOV.UK PaaS complies with the <a href="https://www.ncsc.gov.uk/collection/cloud-security/implementing-the-cloud-security-principles">NCSC cloud security principles</a>. This means the GOV.UK PaaS runs securely and is configured in line with security best practice and government guidance.</p>
+            
+            <h2 class="heading-medium">1. Data in transit protection</h2>
+            
+            <p>Data inside the GOV.UK PaaS is within an <a href="https://aws.amazon.com/vpc/">Amazon Web Services Virtual Private Cloud</a> (AWS VPC).</p>
+            
+            <p>GOV.UK PaaS apps communicate with each other and with <a href="https://docs.cloud.service.gov.uk/deploying_services/">backing services</a> through <a href="https://en.wikipedia.org/wiki/Mutual_authentication">mutual TLS 1.2</a> using <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/client_ssl_auth_filter">client TLS authentication</a>. You do not need to add any custom code.</p>
+            
+            <p>All communication into the GOV.UK PaaS from outside must be over TLS 1.2 and terminates at an AWS <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html">Application Load Balancer</a>.</p>
+            
+            <h2 class="heading-medium">2. Asset protection and resilience</h2>
+            
+            <p>GOV.UK PaaS runs in AWS data centres. AWS data centres have controls in place to secure and protect assets. For more information, see this:</p>
+
+            <ul class="list list-bullet">
+                <li>blog post on <a href="https://aws.amazon.com/blogs/security/using-aws-in-the-context-of-cesg-uks-cloud-security-principles/">using AWS with CESG UK’s cloud security principles</a></li>
+                <li>white paper on <a href="http://d0.awsstatic.com/whitepapers/compliance/AWS_CESG_UK_Cloud_Security_Principles.pdf">using AWS with CESG UK’s cloud security principles</a></li>
+            </ul>
+            
+            <h2 class="heading-medium">3. Separation between users</h2>
+            
+            <p>GOV.UK PaaS hosts apps in containers using <a href="https://docs.cloudfoundry.org/concepts/architecture/garden.html#garden-runc">Garden-RunC</a> and <a href="https://www.docker.com/products/container-runtime">Docker</a>.</p>
+            
+            <p>The GOV.UK PaaS builds <a href="https://docs.cloudfoundry.org/concepts/architecture/garden.html#garden-runc">Garden-RunC</a> containers when users push an app using a <a href="https://docs.cloud.service.gov.uk/deploying_apps.html#buildpacks">buildpack</a>.</p>
+            
+            <p>Users can provide <a href="https://www.docker.com/products/container-runtime">Docker containers</a> as pre-built images.</p>
+            
+            <p>The GOV.UK PaaS uses <a href="http://man7.org/linux/man-pages/man7/namespaces.7.html">namespaces</a> and <a href="http://man7.org/linux/man-pages/man7/cgroups.7.html">cgroups</a> to run multiple containers at the same time with no interference.</p>
+            
+            <p>Namespaces present global resources as isolated resources to a container. Global resources can include IP addresses, filesystem mounts or CPU shares. This means containers cannot see each other over the local network.</p>
+            
+            <p>Cgroups present the hardware resources as isolated resources to the container. For example, only container processes can access the RAM allocated to that container.</p>
+            
+            <p>See the <a href="https://docs.cloudfoundry.org/concepts/container-security.html">Cloud Foundry documentation on container security</a> for more information.</p>
+            
+            <h2 class="heading-medium">4. Governance framework</h2>
+            
+            <p>GOV.UK PaaS, as part of the Government Digital Service (GDS), complies with the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/710816/HMG-Security-Policy-Framework-v1.1.doc.pdf">Security Policy Framework</a>.</p>
+
+            <p>In the GDS security framework, the:</p>
+
+            <ul class="list list-bullet">
+                <li>GDS Chief Operating Officer is the GDS Risk Owner</li>
+                <li>Head Of Information Services acts as the GDS Departmental Security Officer</li>
+                <li>Deputy Director of Technology Operations (TechOps) acts as the Information Asset Owner</li>
+                <li>Information Risk Specialists report to the GDS Head of Information Services</li>
+            </ul>
+
+            <p>Our approach to risk assessment and management follows best practice as described in <a href="http://www.iso.org/iso/catalogue_detail?csnumber=56742">ISO27005</a> and <a href="https://www.ncsc.gov.uk/collection/risk-management-collection">NCSC risk management guidance</a>.</p>
+            
+            <p>We identify technical risks by reviewing the technical architecture and testing of the GOV.UK PaaS and the apps that run on the platform. The Service Information Assurance (IA) lead documents these risks in risk documentation.</p>
+            
+            <p>We identify threats through a combination of:</p>
+
+            <ul class="list list-bullet">
+                <li>government guidance for processing at OFFICIAL</li>
+                <li>Threat Intelligence from government sources </li>
+                <li>internal Cyber Threat Intelligence teams</li>
+            </ul>
+
+            <p>In line with <a href="https://www.iso.org/isoiec-27001-information-security.html">ISO 27001</a>, the TechOps IA lead reviews the risks and controls we have in place every quarter. Monthly Security Working Groups make sure GDS teams review and resolve security-related issues and incidents.</p>
+            
+            <h3 class="heading-medium">Risk assessment scope</h2>
+            
+            <p>During a risk assessment, the TechOps IA lead assesses the following:</p>
+
+            <ul class="list list-bullet">
+                <li>provision, operation and support of GOV.UK PaaS</li>
+                <li>IT systems used by GDS staff to develop and support the GOV.UK PaaS</li>
+                <li>risks inherited by GOV.UK PaaS’s use of AWS for hosting</li>
+            </ul>
+            
+            <p>Your apps and services that use GOV.UK PaaS are not in scope of the risk assessment. Your apps and services are covered by their own accreditation or assurance activities.</p>
+            
+            <h3 class="heading-medium">Formal risk assessment</h3>
+            
+            <p>The formal risk assessment conducted by the IA, Privacy and GOV.UK PaaS teams includes:</p>
+            
+            <ul class="list list-bullet">
+                <li>a formal risk assessment using a method based on <a href="http://www.iso.org/iso/catalogue_detail?csnumber=56742">ISO 27005</a></li>
+                <li>ongoing information risk assessments both quarterly and when there is a major change to the production environment</li>
+                <li>internal <a href="https://en.wikipedia.org/wiki/Attack_tree">attack tree</a> threat modelling processes to identify and improve security architecture, controls and monitoring</li>
+                <li>automated vulnerability scanning of services, libraries and dependencies</li>
+                <li>annual <a href="https://www.ncsc.gov.uk/articles/using-check-provider">CHECK-based</a> IT health check testing of the GOV.UK PaaS</li>
+                <li>creating a residual risk statement and risk treatment plan where appropriate</li>
+                <li>a Data Protection Impact Assessment</li>
+                <li>reviewing suppliers’ privacy policy, terms of use, and memorandum of understanding to ensure Data Protection Act and General Data Protection Regulation (EU) 2016/679 compliance</li>
+            </ul>
+            
+            <h3 class="heading-medium">Risk tolerance</h3>
+            
+            <p>The following is the Cabinet Office risk tolerance stance for GDS. Please check that you agree that the Cabinet Office stance is compatible with your risk tolerance stance.</p>
+
+            <div class="block-quote">
+                <p>(GDS) Delivery of digital services - handling personal, financial data or any other sensitive data. Low (cautious) risk averse risk tolerance. The department is willing to accept only a minimal and unavoidable level of risk here given the nature of the data being handled and our requirements to remain compliant with the DPA/GDPR.</p>
+            
+                <p>Where risks are identified, the effectiveness of controls that are in place are assessed. This helps us identify what the residual risks are and which controls need to be improved.</p>
+            
+                <p>Where controls need improvement, stories are raised and put into the programme backlog for prioritisation and planning.</p>
+            
+                <p>Where residual risks are deemed to be above the risk appetite of the organisation or if the controls are not considered to be effective and prioritisation escalation is needed, then a residual risk report is raised and passed to the SIRO.</p>
+            </div>
+
+            <h2 class="heading-medium">5. Operational security</h2>
+            
+            <p>Configuration and code changes to the GOV.UK PaaS are continuously deployed to live environments through a continuous integration (CI) and continuous delivery (CD) pipeline. Another GOV.UK PaaS team member must review a change before that change enters the CI/CD pipeline.</p>
+            
+            <p>The GOV.UK PaaS team deploys <a href="https://cve.mitre.org/about/faqs.html#what_is_cve">Common Vulnerabilities and Exposures</a> (CVE) fixes regularly. The <a href="https://www.cloudfoundry.org/?s=cve&post_type=blog_posts/">upstream Cloud Foundry RSS feed</a> sends alerts.</p>
+            
+            <p>We have a publicly documented <a href="https://team-manual.cloud.service.gov.uk/#incident-management">incident management process</a>.</p>
+            
+            <p>The GDS Cyber Security team carries out protective monitoring. The GOV.UK PaaS forwards logs into the Cyber Security team monitoring and alerting pipelines. These pipelines align to the attack tree work undertaken by the Cyber Security team as part of their audit process.</p>
+
+            <h2 class="heading-medium">6. Personnel security</h2>
+            
+            <p>There are 3 parts to personnel security:</p>
+
+            <ul class="list list-bullet">
+                <li>security clearance</li>
+                <li>production environment access</li>
+                <li>GOV.UK PaaS team onboarding</li>
+            </ul>
+            
+            <p>GDS follows government and Cabinet Office personnel security processes. All GDS personnel must have at least a security clearance of Security Checked (SC).</p>
+            
+            <p>Before GDS personnel can access production environments, their team leads and senior management assess that personnel’s technical competence and adherence to agreed team working practices.</p>
+            
+            <p>In addition to the GDS process, the GOV.UK PaaS team onboarding process covers product orientation and security working practices, such as how to respond to security issues.</p>
+            
+            <p>GDS personnel can find information on the GDS process in the GDS Wiki. Non-GDS personnel should see the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/714017/HMG_Personnel_Security_Controls_-_May_2018.pdf">government policy on personnel security controls</a> for more information.</p>
+            
+            <h2 class="heading-medium">7. Secure development</h2>
+            
+            <p>When developing code, the GOV.UK PaaS team must both <a href="https://team-manual.cloud.service.gov.uk/team/working_practices/#merging-pull-requests">sign their commits</a> and <a href="https://team-manual.cloud.service.gov.uk/team/working_practices/#pull-requests">review pull request code</a>.</p>
+            
+            <p>We do dependency monitoring on the custom apps we have created that are part of GOV.UK PaaS. For example, backing services and the admin interfaces.</p>
+            
+            <p>We follow the <a href="https://www.ncsc.gov.uk/collection/developers-collection">8 NCSC Secure Development Principles</a>.</p>
+            
+            <p>The Cloud Foundry Foundation uses a secure test-driven development approach for their commits, and have a <a href="https://www.cloudfoundry.org/wp-content/uploads/2017/01/CFF-DEV-OPS-POLICY.pdf">development operations policy</a> in place.</p>
+            
+            <p><a href="https://www.cloudfoundry.org/membership/">Members of the foundation</a> elect the team members for each system component. This team covers development, quality assurance, product and delivery management.</p>
+            
+            <p>When merging changes into a system component’s repository:</p>
+
+            <ul class="list list-bullet">
+                <li>the team develops merges on a <a href="https://github.community/t5/Support-Protips/The-difference-between-forking-and-cloning-a-repository/ba-p/1372">repository fork</a></li>
+                <li>at least 2 team members review every merge commit</li>
+            </ul>
+
+            <h2 class="heading-medium">8. Supply chain security</h2>
+            
+            The following table summarises the supply chain organisational and technical controls.
+
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Organisation</th>
+						<th scope="col">Function</th>
+						<th scope="col">Organisational controls</th>
+						<th scope="col">Technical controls</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>AWS</td>
+						<td>IaaS provider for GOV.UK PaaS</td>
+						<td>AWS holds ISO 27001:2013, ISO 27017:2015 and ISO 27018:2014 certification which implies that the security of <a href="https://ec.europa.eu/info/law/law-topic/data-protection/reform/what-personal-data_en">personal data</a> is subject to annual independent audit. AWS is also covered by PCI DSS, Service Organization Controls (SOC) 1, 2 and 3 Reports and other certifications, all of which require regular internal and independent auditing. GDS has also previously carried out an assurance review of AWS.</td>
+						<td><p>Data encrypted at rest.</p>
+
+                            <p>Data encrypted in transit, to/from the service.</p>
+
+                            <p>Service has been subject to independent CHECK-based IT health check testing.</p>
+
+                            <p>The extent and nature of protective monitoring within AWS is not known but it is understood to include boundary / edge protective monitoring. Holding ISO 27001:2013, ISO 27017:2015 and ISO 27018:2014 certification suggests that an element of event monitoring is also taking place within the organisation.</p></td>
+					</tr>
+				</tbody>
+			</table>
+
+            <p>AWS Dublin and London host the data. AWS global support centres conduct hardware-level support. The following table sets out the data storage locations for the supply chain.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Organisation</th>
+                        <th scope="col">Function</th>
+                        <th scope="col">Location of data</th>
+                        <th scope="col">Location of support</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AWS</td>
+                        <td>IaaS provider for GOV.UK PaaS</td>
+                        <td>EEA: Dublin, Ireland & London UK</td>
+                        <td>Primarily EEA plus other geographical locations for out of hours support</td>
+                    </tr>
+                    <tr>
+                        <td>Aiven</td>
+                        <td><p>Elasticsearch<p/>
+                            <p>InfluxDB</p></td>
+                        <td>EEA: Dublin, Ireland & London UK</td>
+                        <td>Helsinki, Finland</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>The GOV.UK PaaS team has carried out an assurance review of the supply chain. This review:</p>
+
+            <ul class="list list-bullet">
+                <li>covered organisational and procedural controls protecting client environments and data</li>
+                <li>is part of SIRO risk acceptance process</li>
+            </ul>
+
+            <p>We use the Linux Ubuntu distribution, supported by <a href="https://canonical.com/">Canonical</a>. We chose this distribution because of the <a href="https://wiki.ubuntu.com/LTS">Long Term Support</a> (LTS) offered for the server distributions. LTS provides security and stability to our users.</p>
+
+            <p>Cloud Foundry is supported by the membership-based <a href="https://www.cloudfoundry.org/membership/">Cloud Foundry Foundation</a>. The voting rights of a member are based on the amount of code contributions made to Cloud Foundry.</p>
+
+            <p>The foundation has a <a href="https://www.cloudfoundry.org/wp-content/uploads/2017/01/CFF-DEV-GOV-POLICY.pdf">development governance policy</a> that all members must abide by.</p>
+
+            <h2 class="heading-medium">9. Secure user management</h2>
+
+            <p>The GOV.UK PaaS uses the <a href="https://docs.cloudfoundry.org/concepts/architecture/uaa.html">Cloud Foundry User Account and Authentication (UAA)</a> system for user authentication and authorisation. We support single sign-on using Google or Microsoft identity providers, or username and password.</p>
+
+            <p>GOV.UK PaaS team members operate under role-based access control to configure infrastructure. GOV.UK PaaS administrators all have security check clearance.</p>
+
+            <h2 class="heading-medium">10. Identity and authentication</h2>
+
+            <p>All access to the GOV.UK PaaS is secured using <a href="https://docs.cloudfoundry.org/concepts/architecture/uaa.html">Cloud Foundry UAA</a> with <a href="https://openid.net/connect/">OpenIDConnect</a></p>
+
+            <p><a href="https://docs.cloud.service.gov.uk/orgs_spaces_users.html#org-manager">Organisation managers</a> give users permission within <a href="https://docs.cloud.service.gov.uk/orgs_spaces_users.html#organisations">organisations</a> and <a href="https://docs.cloud.service.gov.uk/orgs_spaces_users.html#spaces">spaces</a>.</p>
+
+            <p>You are responsible for the security of your credentials. You can change your credentials using either the:</p>
+
+            <ul class="list list-bullet">
+                <li><a href="https://cli.cloudfoundry.org/en-US/cf/passwd.html">command line</a></li>
+                <li><a href="https://login.cloud.service.gov.uk/forgot_password">Ireland</a> or <a href="https://login.london.cloud.service.gov.uk/forgot_password">London admin interfaces</a>.</li>
+            </ul>
+
+            <p>You are responsible for implementing authentication on your apps.</p>
+
+            <h2 class="heading-medium">11. External interface protection</h2>
+
+            <p>External web traffic coming into the GOV.UK PaaS is protected with <a href="https://docs.aws.amazon.com/shield/">AWS Shield</a>, and comes through either <a href="https://docs.aws.amazon.com/cloudfront/index.html">AWS CloudFront</a> or <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html">AWS Application Load Balancer</a></p>
+
+            <p>SSH traffic comes in through an <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html">Application Load Balancer</a>, and is protected with AWS <a href="https://docs.aws.amazon.com/shield/">Shield</a>.</p>
+
+            <p><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html">AWS VPCs</a> and <a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html">security groups</a> protect internal systems.</p>
+
+            <h2 class="heading-medium">12. Secure service administration</h2>
+
+            <p>The GOV.UK PaaS recognise that GOV.UK PaaS represents a high value target to attackers, and we apply the following mitigations.</p>
+
+            <p>The GOV.UK PaaS stores all platform secrets in a secure credential vault. The Cyber Security team audits the access to the secure credential vault.</p>
+
+            <p>Bosh, Concourse and AWS have highly privileged access, which we control using a combination of single sign-on, multi-factor authentication (MFA) and IP restrictions.</p>
+
+            <p>The GOV.UK PaaS automatically sends audit logs of GOV.UK PaaS team actions on the platform to the Cyber Security team for independent alerting. The Cyber Security team conducts forensic analysis of suspected breaches or other abnormal platform activity. You can also request this analysis.</p>
+
+            <h2 class="heading-medium">13. Audit information for users</h2>
+
+            <p>The GOV.UK PaaS automatically sends audit logs of user actions on the platform to the Cyber Security team for independent alerting. The Cyber Security team conducts forensic analysis of suspected breaches or other abnormal platform activity. GOV.UK PaaS users can also request this analysis.</p>
+
+            <p>When GOV.UK PaaS sends audit logs of user actions to the Cyber Security team, the log format and content type is <a href="https://docs.cloudfoundry.org/loggregator/cc-uaa-logging.html">documented</a> automatically. These logs are regularly audited by our IA team.</p>
+
+            <p>You can view these audit logs in the GOV.UK PaaS Admin interface for <a href="https://admin.cloud.service.gov.uk">Ireland</a> or <a href="https://admin.london.cloud.service.gov.uk">London</a>.</p>
+
+            <h2 class="heading-medium">14. Secure use of the service</h2>
+
+            <p>There are several areas of the GOV.UK PaaS technical documentation that cover secure use of the platform:</p>
+
+            <ul class="list list-bullet">
+                <li><a href="https://docs.cloud.service.gov.uk/orgs_spaces_users.html#managing-organisations-spaces-and-users">managing organisations, spaces and users</a></li>
+                <li><a href="https://docs.cloud.service.gov.uk/responsibility_model.html#know-your-responsibilities">know your responsibilities</a></li>
+                <li><a href="https://docs.cloud.service.gov.uk/using_ci.html#configure-your-ci-tool-accounts">configuring your CI tool accounts</a></li>
+            </ul>
+
+            <p>You should also:</p>
+            <ul class="list list-bullet">
+                <li>regularly restage your apps to take advantage of the latest <a href="https://docs.cloud.service.gov.uk/deploying_apps.html#buildpacks">buildpacks</a> the platform offers</li>
+                <li><a href="https://docs.cloud.service.gov.uk/deploying_apps.html#buildpack-language-version-updates">specify major and minor versions</a> of the language you use</li>
+            </ul>
+
+            <p>The GOV.UK PaaS sends buildpack update notifications to the <a href="https://groups.google.com/a/digital.cabinet-office.gov.uk/forum/#!forum/gov-uk-paas-announce">GOV.UK PaaS announce group</a>. Join this group to keep up to date with the latest GOV.UK PaaS information you need.</p>
+
+            <h2 class="heading-medium">More information</h2>
+            For more information, see the:
+            <ul class="list list-bullet">
+                <li><a href="https://www.ncsc.gov.uk/collection/cloud-security?curPage=/collection/cloud-security/implementing-the-cloud-security-principles">NCSC cloud security guidance</a></li>
+                <li><a href="https://docs.cloudfoundry.org/concepts/security.html">Cloud Foundry security documentation</a></li>
+                <li><a href="https://www.ncsc.gov.uk/collection/developers-collection">NCSC secure development and deployment guidance</a></li>
+            </ul>
+		</div>
+	</div>
+</div>
