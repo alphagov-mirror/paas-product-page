@@ -25,7 +25,7 @@
             
             <p>Data inside the GOV.UK PaaS is within an <a href="https://aws.amazon.com/vpc/">Amazon Web Services Virtual Private Cloud</a> (AWS VPC).</p>
             
-            <p>GOV.UK PaaS apps communicate with each other and with <a href="https://docs.cloud.service.gov.uk/deploying_services/">backing services</a> through <a href="https://en.wikipedia.org/wiki/Mutual_authentication">mutual TLS 1.2</a> using <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/client_ssl_auth_filter">client TLS authentication</a>. You do not need to add any custom code.</p>
+            <p>GOV.UK PaaS apps communicate with each other through private LANs using <a href="https://github.com/cloudfoundry/silk">Silk</a>. Silk uses <a href="https://tools.ietf.org/html/rfc7348">VXLAN</a> to address private virtual network address spaces. Cloud Foundry network policies use <a href="https://linux.die.net/man/8/iptables">iptables</a> to stop unwanted communication between apps. GOV.UK PaaS apps communicate with <a href="https://docs.cloud.service.gov.uk/deploying_services/">backing services</a> over TLS 1.2. You do not need to add any custom code.</p>
             
             <p>All communication into the GOV.UK PaaS from outside must be over TLS 1.2 and terminates at an AWS <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html">Application Load Balancer</a>.</p>
             
@@ -40,7 +40,7 @@
             
             <h2 class="heading-medium">3. Separation between users</h2>
             
-            <p>GOV.UK PaaS hosts apps in containers using <a href="https://docs.cloudfoundry.org/concepts/architecture/garden.html#garden-runc">Garden-RunC</a> and <a href="https://www.docker.com/products/container-runtime">Docker</a>.</p>
+            <p>GOV.UK PaaS hosts apps in containers using <a href="https://docs.cloudfoundry.org/concepts/architecture/garden.html#garden-runc">Garden-RunC</a>.</p>
             
             <p>The GOV.UK PaaS builds <a href="https://docs.cloudfoundry.org/concepts/architecture/garden.html#garden-runc">Garden-RunC</a> containers when users push an app using a <a href="https://docs.cloud.service.gov.uk/deploying_apps.html#buildpacks">buildpack</a>.</p>
             
@@ -48,7 +48,7 @@
             
             <p>The GOV.UK PaaS uses <a href="http://man7.org/linux/man-pages/man7/namespaces.7.html">namespaces</a> and <a href="http://man7.org/linux/man-pages/man7/cgroups.7.html">cgroups</a> to run multiple containers at the same time with no interference.</p>
             
-            <p>Namespaces present global resources as isolated resources to a container. Global resources can include IP addresses, filesystem mounts or CPU shares. This means containers cannot see each other over the local network.</p>
+            <p>Namespaces present global resources as isolated resources to a container. Global resources can include IP addresses, filesystem mounts or CPU shares. This means containers cannot see each other over the host or loopback network.</p>
             
             <p>Cgroups present the hardware resources as isolated resources to the container. For example, only container processes can access the RAM allocated to that container.</p>
             
@@ -247,7 +247,7 @@
 
             <h2 class="heading-medium">10. Identity and authentication</h2>
 
-            <p>All access to the GOV.UK PaaS is secured using <a href="https://docs.cloudfoundry.org/concepts/architecture/uaa.html">Cloud Foundry UAA</a> with <a href="https://openid.net/connect/">OpenIDConnect</a></p>
+            <p>All access to the GOV.UK PaaS is secured using <a href="https://docs.cloudfoundry.org/concepts/architecture/uaa.html">Cloud Foundry UAA</a> with the option to use <a href="https://openid.net/connect/">OpenIDConnect</a></p>
 
             <p><a href="https://docs.cloud.service.gov.uk/orgs_spaces_users.html#org-manager">Organisation managers</a> give users permission within <a href="https://docs.cloud.service.gov.uk/orgs_spaces_users.html#organisations">organisations</a> and <a href="https://docs.cloud.service.gov.uk/orgs_spaces_users.html#spaces">spaces</a>.</p>
 
