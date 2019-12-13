@@ -29,7 +29,7 @@
 			<ul class="list list-bullet">
 				<li>It’s accredited for handling personal and confidential information classified as Official</li>
 				<li>Modern TLS standards are enforced for all traffic entering the platform</li>
-				<li>Traffic inside the platform is protected by industry standard, strong IPsec encryption</li>
+				<li>apps communicate with each other through private LANs using <a href="https://github.com/cloudfoundry/silk">Silk</a>. Silk uses <a href="https://tools.ietf.org/html/rfc7348">VXLAN</a> to address private virtual network address spaces. Cloud Foundry network policies use <a href="https://linux.die.net/man/8/iptables">iptables</a> to stop unwanted communication between apps.</li>
 				<li>Applications running on the platform are isolated from each other so they can’t read or change each other's code, data or logs</li>
 				<li>Applications can communicate internally via a private network</li>
 				<li>Authorised developers have SSH access to application containers to debug problems</li>
