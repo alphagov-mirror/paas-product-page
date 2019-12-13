@@ -21,7 +21,7 @@
 			<p>The platform is designed to meet both the <a href="https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles">Cloud Security Principles</a> and the common security needs of data classified as ‘official’:</p>
 			<ul class="list list-bullet">
 				<li>data in transit is protected by HTTPS from the client to the platform</li>
-				<li>IPSec secures data when routing traffic across the platform to your application</li>
+				<li>apps communicate with each other through private LANs using <a href="https://github.com/cloudfoundry/silk">Silk</a>. Silk uses <a href="https://tools.ietf.org/html/rfc7348">VXLAN</a> to address private virtual network address spaces. Cloud Foundry network policies use <a href="https://linux.die.net/man/8/iptables">iptables</a> to stop unwanted communication between apps.</li>
 				<li>connections from your application to backing services require TLS</li>
 				<li>we host on Amazon Web Services (AWS) - their physical security procedures are <a href="http://d0.awsstatic.com/whitepapers/compliance/AWS_CESG_UK_Cloud_Security_Principles.pdf">robust and audited</a></li>
 				<li>data in backing services can be encrypted at rest</li>
