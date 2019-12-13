@@ -19,21 +19,21 @@
 			<h2 class="heading-medium">The basics</h2>
 			<ul class="list list-bullet">
 				<li>UK hosted, with hosting in Ireland also available</li>
-				<li>Runs from Amazon Web Services</li>
-				<li>It’s resilient since it operates across three independent availability zones</li>
-				<li>It’s built on an open source PaaS platform (Cloud Foundry)</li>
-				<li>You can decide to move to other Cloud Foundry-based PaaS providers, including on GCloud, as you’re not locked into our platform</li>
-				<li>It's best suited for <a href="https://12factor.net/">Twelve-Factor</a> App development</li>
+				<li>runs from Amazon Web Services</li>
+				<li>it’s resilient since it operates across three independent availability zones</li>
+				<li>it’s built on an open source PaaS platform (Cloud Foundry)</li>
+				<li>you can decide to move to other Cloud Foundry-based PaaS providers, including on GCloud, as you’re not locked into our platform</li>
+				<li>it's best suited for <a href="https://12factor.net/">Twelve-Factor</a> App development</li>
 			</ul>
 			<h2 class="heading-medium">Security</h2>
 			<ul class="list list-bullet">
-				<li>It’s accredited for handling personal and confidential information classified as Official</li>
-				<li>Modern TLS standards are enforced for all traffic entering the platform</li>
+				<li>it’s accredited for handling personal and confidential information classified as Official</li>
+				<li>modern TLS standards are enforced for all traffic entering the platform</li>
 				<li>apps communicate with each other through private LANs using <a href="https://github.com/cloudfoundry/silk">Silk</a>. Silk uses <a href="https://tools.ietf.org/html/rfc7348">VXLAN</a> to address private virtual network address spaces. Cloud Foundry network policies use <a href="https://linux.die.net/man/8/iptables">iptables</a> to stop unwanted communication between apps.</li>
-				<li>Applications running on the platform are isolated from each other so they can’t read or change each other's code, data or logs</li>
-				<li>Applications can communicate internally via a private network</li>
-				<li>Authorised developers have SSH access to application containers to debug problems</li>
-				<li>It supports single sign-on through your organisation's Microsoft or Google accounts</li>
+				<li>applications running on the platform are isolated from each other so they can’t read or change each other's code, data or logs</li>
+				<li>applications can communicate internally via a private network</li>
+				<li>authorised developers have SSH access to application containers to debug problems</li>
+				<li>it supports single sign-on through your organisation's Microsoft or Google accounts</li>
 			</ul>
 			<p class="content-section__body">
 				<a href="/security">Read more about how we keep GOV.UK PaaS secure</a>
@@ -47,8 +47,8 @@
 				<li>Python</li>
 				<li>Ruby</li>
 				<li>.NET Core</li>
-				<li>A static HTML/CSS/Javascript site</li>
-				<li>A compiled binary</li>
+				<li>a static HTML/CSS/Javascript site</li>
+				<li>a compiled binary</li>
 				<li>R</li>
 			</ul>
 			<p>GOV.UK PaaS allows the use of custom buildpacks and Docker images (with limited functionality) to enable other technologies. Keep in mind that we can provide limited support for the maintenance of custom libraries and frameworks.</p>
@@ -63,30 +63,30 @@
 
 			<h2 class="heading-medium">Self-service Provisioning</h2>
 			<ul class="list list-bullet">
-				<li>It takes a few minutes to create sandbox and testing environments, and even less to delete them once you don’t need them anymore</li>
-				<li>Set up a new DB or service in minutes with the CloudFoundry command line or an API: no tickets or requests required</li>
-				<li>Service teams can grow their service from prototype to production without replatforming</li>
-				<li>A pricing calculator is available to anticipate ongoing costs, and to assist with planning for scaling apps</li>
+				<li>it takes a few minutes to create sandbox and testing environments, and even less to delete them once you don’t need them anymore</li>
+				<li>set up a new DB or service in minutes with the CloudFoundry command line or an API: no tickets or requests required</li>
+				<li>service teams can grow their service from prototype to production without replatforming</li>
+				<li>a pricing calculator is available to anticipate ongoing costs, and to assist with planning for scaling apps</li>
 			</ul>
 			<h2 class="heading-medium">Deploying and running apps</h2>
 			<ul class="list list-bullet">
-				<li>Manage applications with the CloudFoundry command line or API</li>
-				<li>Scale applications up and down in seconds</li>
-				<li>Use private applications to deploy microservices that are not accessible from the public internet</li>
-				<li>You can build on the API or the command line to enable auto-scaling</li>
-				<li>Deploy from CI services such as Travis, Jenkins or Concourse</li>
-				<li>Use a custom domain to host your app</li>
+				<li>manage applications with the CloudFoundry command line or API</li>
+				<li>scale applications up and down in seconds</li>
+				<li>use private applications to deploy microservices that are not accessible from the public internet</li>
+				<li>you can build on the API or the command line to enable auto-scaling</li>
+				<li>deploy from CI services such as Travis, Jenkins or Concourse</li>
+				<li>use a custom domain to host your app</li>
 			</ul>
 			<h2 class="heading-medium">Performance</h2>
 			<ul class="list list-bullet">
-				<li>You can check the status of the platform on our <a href="https://status.cloud.service.gov.uk/">system status page</a></li>
-				<li>Application logs can be streamed to SaaS logging platforms if service teams need to monitor app-specific performance metrics</li>
-				<li>Service metrics can be captured from backing services</li>
+				<li>you can check the status of the platform on our <a href="https://status.cloud.service.gov.uk/">system status page</a></li>
+				<li>application logs can be streamed to SaaS logging platforms if service teams need to monitor app-specific performance metrics</li>
+				<li>service metrics can be captured from backing services</li>
 			</ul>
 
 			<h2 class="heading-medium">Support and maintenance</h2>
-			<p>The GOV.UK PaaS team provides platform-level support 24/7. If your team is experiencing any issue using the platform we can provide assistance during office hours.</p>
-			<p>The GOV.UK PaaS team is in charge of monitoring the infrastructure, and patching operating systems and infrastructure components. We use zero downtime deploys, so upgrades to the PaaS won't interfere with the running of your application.</p>
+			<p>the GOV.UK PaaS team provides platform-level support 24/7. If your team is experiencing any issue using the platform we can provide assistance during office hours.</p>
+			<p>the GOV.UK PaaS team is in charge of monitoring the infrastructure, and patching operating systems and infrastructure components. We use zero downtime deploys, so upgrades to the PaaS won't interfere with the running of your application.</p>
 
 		</div>
 	</div>
