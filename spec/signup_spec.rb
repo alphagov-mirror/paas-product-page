@@ -46,7 +46,7 @@ RSpec.describe "Signup", :type => :feature do
 		}
 	end
 
-  %w(nhs.net nhs.uk mod.uk).each do |tld|
+  %w(nhs.net nhs.uk mod.uk met.police.uk).each do |tld|
     it "should submit the form successfully with an #{tld} email" do
       email = "jane@#{tld}"
 
