@@ -46,7 +46,7 @@ RSpec.describe "Signup", :type => :feature do
 		}
 	end
 
-  %w(nhs.net nhs.uk mod.uk met.police.uk).each do |tld|
+  %w(nhs.net nhs.uk mod.uk met.police.uk police.uk).each do |tld|
     it "should submit the form successfully with an #{tld} email" do
       email = "jane@#{tld}"
 
@@ -125,6 +125,17 @@ RSpec.describe "Signup", :type => :feature do
 		visit '/signup'
 		fill_in('person_name', with: 'jeff')
 		fill_in('person_email', with: 'jeff@gmail.com')
+		fill_in('department_name', with: 'TestDept')
+		fill_in('service_name', with: 'TestService')
+		click_button('signup-submit')
+		expect(page.first('.form-group--person_email .error-message').text).not_to be_empty
+		expect(page.status_code).to eq(400)
+	end
+
+  it "should require a @location.police.uk or @police.uk email for person_email" do
+		visit '/signup'
+		fill_in('person_name', with: 'jeff')
+		fill_in('person_email', with: 'jeff@notthepolice.uk')
 		fill_in('department_name', with: 'TestDept')
 		fill_in('service_name', with: 'TestService')
 		click_button('signup-submit')

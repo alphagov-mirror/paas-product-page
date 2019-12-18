@@ -63,7 +63,7 @@ module Forms
 		field :message,                      String, :required => false # Make message optional
 
 		# Ensure the email is .gov.uk
-		field :person_email,                 String, :required => true, :match => /.+@(?:.+\.gov\.uk|.*mod\.uk|.+\.police\.uk|.*(nhs\.(net|uk)))$/, :min => 5, :label => 'Email address'
+		field :person_email,                 String, :required => true, :match => /.+@(?:.+\.gov\.uk|.*mod\.uk|.+\.police\.uk|police\.uk|.*(nhs\.(net|uk)))$/, :min => 5, :label => 'Email address'
 
 		field :person_is_manager,            Boolean
 		field :department_name,              String, :required => true
