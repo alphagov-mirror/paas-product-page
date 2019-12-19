@@ -121,7 +121,7 @@ RSpec.describe "Signup", :type => :feature do
 		expect(page.status_code).to eq(400)
 	end
 
-  it "should require a .gov.uk or .nhs.net email for person_email" do
+  it "should reject users with a person_email not on our list" do
 		visit '/signup'
 		fill_in('person_name', with: 'jeff')
 		fill_in('person_email', with: 'jeff@gmail.com')
