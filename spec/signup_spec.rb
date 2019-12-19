@@ -132,16 +132,18 @@ RSpec.describe "Signup", :type => :feature do
 		expect(page.status_code).to eq(400)
 	end
 
-  it "should require a @location.police.uk or @police.uk email for person_email" do
-		visit '/signup'
-		fill_in('person_name', with: 'jeff')
-		fill_in('person_email', with: 'jeff@notthepolice.uk')
-		fill_in('department_name', with: 'TestDept')
-		fill_in('service_name', with: 'TestService')
-		click_button('signup-submit')
-		expect(page.first('.form-group--person_email .error-message').text).not_to be_empty
-		expect(page.status_code).to eq(400)
-	end
+  %w(gov.uk nhs.net nhs.uk mod.uk police.uk).each do |tld|
+    it "should reject partial person_email matches for #{tld}" do
+      visit '/signup'
+      fill_in('person_name', with: 'jeff')
+      fill_in('person_email', with: "jeff@notthe#{tld}")
+      fill_in('department_name', with: 'TestDept')
+      fill_in('service_name', with: 'TestService')
+      click_button('signup-submit')
+      expect(page.status_code).to eq(400)
+      expect(page.first('.form-group--person_email .error-message').text).not_to be_empty
+    end
+  end
 
 	it "should require department_name field" do
 		visit '/signup'
