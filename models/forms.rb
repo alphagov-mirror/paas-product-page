@@ -60,10 +60,31 @@ module Forms
 	end
 
 	class Signup < GenericContact
+
+    VALID_GOV_DOMAIN_REGEX = Regexp.union(
+      # GOV.UK and nested subdomains
+      /[^@]+@gov[.]uk$/,
+      /[^@]+@[-.a-z0-9]+[.]gov[.]uk$/,
+
+      # MoD and nested subdomains
+      /[^@]+@mod[.]uk$/,
+      /[^@]+@[-.a-z0-9]+[.]mod[.]uk$/,
+
+      # Police and nested subdomains
+      /[^@]+@police[.]uk$/,
+      /[^@]+@[-.a-z0-9]+[.]police[.]uk$/,
+
+      # NHS and nested subdomains
+      /[^@]+@nhs[.]uk$/,
+      /[^@]+@[-.a-z0-9]+[.]nhs[.]uk$/,
+      /[^@]+@nhs[.]net$/,
+      /[^@]+@[-.a-z0-9]+[.]nhs[.]net$/,
+    )
+
 		field :message,                      String, :required => false # Make message optional
 
 		# Ensure the email is .gov.uk
-		field :person_email,                 String, :required => true, :match => /.+@(?:.+\.gov\.uk|.*mod\.uk|.+\.police\.uk|police\.uk|.*(nhs\.(net|uk)))$/, :min => 5, :label => 'Email address'
+		field :person_email,                 String, :required => true, :match => VALID_GOV_DOMAIN_REGEX, :min => 5, :label => 'Email address'
 
 		field :person_is_manager,            Boolean
 		field :department_name,              String, :required => true
