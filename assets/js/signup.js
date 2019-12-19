@@ -95,7 +95,7 @@ $(function(){
 	}
 
 	function isGovEmail(v) {
-		return v && (/.+\.gov\.uk$/.test(v) || /.+nhs\.(net|uk)$/.test(v) || /.+mod\.uk$/.test(v) || /.+\.police\.uk$/.test(v));
+		return v && (/.+\.gov\.uk$/.test(v) || /.+nhs\.(net|uk)$/.test(v) || /.+mod\.uk$/.test(v) || /.+\.police\.uk$/.test(v) || /police\.uk$/.test(v));
 	}
 
 	function getFormError(name, value) {
@@ -113,7 +113,7 @@ $(function(){
 				return 'Must be a valid email address';
 			}
 			if (!isGovEmail(value)) {
-				return 'We can only accept requests from .gov.uk, .mod.uk, nhs.net, nhs.uk or .police.uk email addresses';
+				return 'We can only accept requests from .gov.uk, .mod.uk, nhs.net, nhs.uk, .police.uk or police.uk email addresses';
 			}
 		} else if (name == 'department_name') {
 			if (isBlank(value)) {
