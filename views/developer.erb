@@ -13,14 +13,132 @@
 		</div>
 
 		<div class="column-two-thirds">
-			<h1 class="heading-xlarge">Developer</h1>
+			<h1 class="heading-xlarge">Application development</h1>
+			<p>GOV.UK PaaS gives you a straightforward way to run your cloud native applications in containers. The platform supports most common programming languages and Docker containers.</p>
+			<h2 class="heading-medium">Languages</h2>
+			<p>GOV.UK PaaS provides a consistent experience for different programming languages through the use of language <a href="https://docs.cloudfoundry.org/buildpacks/">buildpacks</a>.</p>
+			<p>
+				<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Buildpack</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://docs.cloudfoundry.org/buildpacks/binary/index.html">Binary</a></td>
+<td>arbitrary binary web applications</td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.cloudfoundry.org/buildpacks/custom.html">Custom</a></td>
+<td>custom buildpacks providing any language runtime from the wider Cloud Foundry community</td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.cloudfoundry.org/buildpacks/go/index.html">Go</a></td>
+<td>apps written in the Go programming language</td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.cloudfoundry.org/buildpacks/java/index.html">Java</a></td>
+<td>apps written in the Java programming language or Java Virtual Machine languages such as Scala</td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.cloudfoundry.org/buildpacks/nginx/index.html">Nginx</a></td>
+<td>web server</td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.cloudfoundry.org/buildpacks/node/index.html">Nodejs</a></td>
+<td>apps written in the Nodejs programming language</td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.cloudfoundry.org/buildpacks/php/index.html">PHP</a></td>
+<td>apps written in the PHP programming language</td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.cloudfoundry.org/buildpacks/ruby/index.html">Ruby</a></td>
+<td>apps written in the Ruby programming language</td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.cloudfoundry.org/buildpacks/python/index.html">Python</a></td>
+<td>apps written in the Python programming language</td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.cloudfoundry.org/buildpacks/r/index.html">R</a></td>
+<td>apps written in the R programming language</td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.cloudfoundry.org/buildpacks/staticfile/index.html">Static</a></td>
+<td>Static HTML/CSS/Javascript websites served by nginx. The product of site publishing tools such as <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://middlemanapp.com/">middleman</a> or <a href="https://gohugo.io/">Hugo</a></td>
+</tr>
+</tbody>
+</table>
 
-			<h2 class="heading-medium">Medium</h2>
+			</p>
+			<h2 class="heading-medium">Docker</h2>
+			<p>GOV.UK PaaS also <a href="https://docs.cloud.service.gov.uk/deploying_apps.html#deploy-a-docker-image-experimental">supports the deployment of Docker images</a> with the following caveats:</p>
 			<ul class="list list-bullet">
-				<li>apples</li>
-				<li>oranges</li>
+			<li>We do not offer a Docker registry service</li>
+			<li>Images must be pushed to a Docker registry such as <a href="https://hub.docker.com/">DockerHub</a> or <a href="https://cloud.google.com/container-registry">Google Container Registry</a> before they can be deployed to GOV.UK PaaS. Your ability to stage and restage Docker applications is tied to the availability of the registry hosting the images.</li>
+			<li>GOV.UK PaaS does not support Docker Compose multi-container applications</li>
+			<li>The maximum size of Docker image that may be staged is 4GB</li>
 			</ul>
+			<h2 class="heading-medium">Backing services</h2>
+			<p>GOV.UK PaaS provides a number of highly available backing services.</p>
+			<p>
+				<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Service</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CDN-route</td>
+<td>Proxy traffic from a user controlled domain to an existing Cloud Foundry application or external URL. This allows you to bring your own domain to the platform and have the platform manage your TLS certificates using <a href="https://aws.amazon.com/cloudfront/">AWS Cloudfront</a> + Letsencrypt</td>
+</tr>
+<tr class="even">
+<td><a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a></td>
+<td>A search engine based on Lucene. It provides a full-text search engine with an HTTP web interface and schema-free JSON documents.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.mysql.com/">MySQL</a></td>
+<td>A relational database system</td>
+</tr>
+<tr class="even">
+<td>Object Store</td>
+<td>Object storage using <a href="https://aws.amazon.com/s3/">S3</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.postgresql.org/">PostgreSQL</a></td>
+<td>A relational database system</td>
+</tr>
+<tr class="even">
+<td><a href="https://redis.io/">Redis</a></td>
+<td>A distributed, in-memory key-value database with optional durability</td>
+</tr>
+</tbody>
+</table>
+
+			</p>
+			<h2 class="heading-medium">External services</h2>
+			<p>In addition to the service we provide, applications can connect to other internet hosted back-ends allowing you to integrate third party services and other platforms through public web APIs.</p>
+			<h2 class="heading-medium">Public and private networking</h2>
+			<p>Applications on GOV.UK PaaS typically have a route to allow <a href="https://docs.cloud.service.gov.uk/deploying_apps.html#deploying-public-apps">inbound connections via the internet</a>.</p>
+			<p>The platform also supports <a href="https://docs.cloud.service.gov.uk/deploying_apps.html#deploying-private-apps">private applications</a> (i.e. applications without a public internet route).</p>
+
 
 		</div>
 	</div>
 </div>
+
+
+---
