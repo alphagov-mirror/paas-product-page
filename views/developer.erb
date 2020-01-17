@@ -1,0 +1,26 @@
+<% content_for :head do %>
+	<title>development - <%= settings.title %></title>
+<% end %>
+
+<% content_for :breadcrumb do %>
+	<%== erb :'partials/_breadcrumb', :locals => {name: 'Features, roadmap and security', href: request.path_info, active: true} %>
+<% end %>
+
+<div class="container">
+	<div class="grid-row">
+		<div class="column-one-third">
+			<%== erb :'partials/_subnav', :locals => {active: 'developer'} %>
+		</div>
+
+		<div class="column-two-thirds">
+			<h1 class="heading-xlarge">Developer</h1>
+
+			<h2 class="heading-medium">Medium</h2>
+			<ul class="list list-bullet">
+				<li>apples</li>
+				<li>oranges</li>
+			</ul>
+
+		</div>
+	</div>
+</div>

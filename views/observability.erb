@@ -1,0 +1,30 @@
+<% content_for :head do %>
+	<title>development - <%= settings.title %></title>
+<% end %>
+
+<% content_for :breadcrumb do %>
+	<%== erb :'partials/_breadcrumb', :locals => {name: 'Features, roadmap and security', href: request.path_info, active: true} %>
+<% end %>
+
+<div class="container">
+	<div class="grid-row">
+		<div class="column-one-third">
+			<%== erb :'partials/_subnav', :locals => {active: 'observability'} %>
+		</div>
+
+		<div class="column-two-thirds">
+			<h1 class="heading-xlarge">Observability</h1>
+
+			<h2 class="heading-medium">Logs</h2>
+			<p>The platform <a href="https://docs.cloud.service.gov.uk/monitoring_apps.html#logs">aggregates logs for your application in a buffer of finite size</a>. If you want to persist these you must ship your logs to an <a href="https://docs.cloud.service.gov.uk/monitoring_apps.html#logs">external service</a>.</p>
+
+			<h2 class="heading-medium">Metrics</h2>
+			<p>The platform can be configured to <a href="https://docs.cloud.service.gov.uk/monitoring_apps.html#monitoring-apps">emit application metrics in standard statsd or prometheus format</a>. To persist these metrics, you must ship them to an external service.</p>
+			<p>For most backing services, we provide metrics in the GOV.UK PaaS admin tool.</p>
+
+			<h2 class="heading-medium">Tracing</h2>
+			<p>The platform <a href="https://docs.cloud.service.gov.uk/troubleshooting.html#tracing-http-requests">adds Zipkin compatible headers</a> to the incoming requests so you can match those with your application’s responses.</p>
+
+		</div>
+	</div>
+</div>

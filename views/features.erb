@@ -15,78 +15,102 @@
 
 
 		<div class="column-two-thirds">
-			<h1 id="features" class="heading-xlarge">Features</h1>
-			<h2 id="the-basics" class="heading-medium">The basics</h2>
+			<h1 class="heading-xlarge">Features</h1>
+
+			<h2 class="heading-medium">Reliable cloud infrastructure for government services</h2>
+
+			<p>GOV.UK PaaS is a reliable and security-compliant application platform for running your government service in the cloud.</p>
+
+			<p>The platform is hosted on Amazon Web Services in the UK, with hosting in Ireland also available. Applications are automatically run across three independent availability zones to ensure resilience.</p>
+
+			<p><a href="https://status.cloud.service.gov.uk/">View our last 3 months performance on our service status page</a></p>
+
+			<h2 class="heading-medium">Build services faster</h2>
+
+			<p>GOV.UK PaaS offers tools to help teams build and run cloud native applications in production without the need for specialist infrastructure skills. We maintain and secure the infrastructure, so your team can focus on improving your applications.</p>
+
+			<p>GOV.UK PaaS provides:</p>
+
 			<ul class="list list-bullet">
-				<li>UK hosted, with hosting in Ireland also available</li>
-				<li>runs from Amazon Web Services</li>
-				<li>it’s resilient since it operates across three independent availability zones</li>
-				<li>it’s built on an open source PaaS platform (Cloud Foundry)</li>
-				<li>you can decide to move to other Cloud Foundry-based PaaS providers, including on GCloud, as you’re not locked into our platform</li>
-				<li>it's best suited for <a href="https://12factor.net/">Twelve-Factor</a> App development</li>
-			</ul>
-			<h2 id="security" class="heading-medium">Security</h2>
+			<li>a self-service developer experience, based on open source Cloud Foundry</li>
+			<li><a href="https://docs.cloud.service.gov.uk/deploying_apps.html#buildpacks">buildpack</a> support for writing applications in most major languages including:
 			<ul class="list list-bullet">
-				<li>it’s accredited for handling personal and confidential information classified as Official</li>
-				<li>modern TLS standards are enforced for all traffic entering the platform</li>
-				<li>apps communicate with each other through private LANs using <a href="https://github.com/cloudfoundry/silk">Silk</a>. Silk uses <a href="https://tools.ietf.org/html/rfc7348">VXLAN</a> to address private virtual network address spaces. Cloud Foundry network policies use <a href="https://linux.die.net/man/8/iptables">iptables</a> to stop unwanted communication between apps.</li>
-				<li>applications running on the platform are isolated from each other so they can’t read or change each other's code, data or logs</li>
-				<li>applications can communicate internally via a private network</li>
-				<li>authorised developers have SSH access to application containers to debug problems</li>
-				<li>it supports single sign-on through your organisation's Microsoft or Google accounts</li>
-			</ul>
-			<p class="content-section__body">
-				<a href="/security">Read more about how we keep GOV.UK PaaS secure</a>
-			</p>
-			<h2 id="languages-supported" class="heading-medium">Languages supported</h2>
+			  <li>Go</li>
+			  <li>Java (and other JVM-based languages such as Scala)</li>
+			  <li>Node.js,</li>
+			  <li>PHP</li>
+			  <li>Python</li>
+			  <li>R</li>
+			  <li>Ruby</li>
+			  <li>.NET Core</li>
+			  <li>a static HTML/CSS/Javascript site</li>
+			  <li>a compiled binary</li>
+			</ul></li>
+			<li>backing services including:
 			<ul class="list list-bullet">
-				<li>Go</li>
-				<li>Node.js</li>
-				<li>Java (and other JVM-based languages such as Scala)</li>
-				<li>PHP</li>
-				<li>Python</li>
-				<li>Ruby</li>
-				<li>.NET Core</li>
-				<li>a static HTML/CSS/Javascript site</li>
-				<li>a compiled binary</li>
-				<li>R</li>
-			</ul>
-			<p>GOV.UK PaaS allows the use of custom buildpacks and Docker images (with limited functionality) to enable other technologies. Keep in mind that we can provide limited support for the maintenance of custom libraries and frameworks.</p>
-			<h2 id="backing-services" class="heading-medium">Backing services</h2>
-			<ul class="list list-bullet">
-				<li>PostgreSQL</li>
-				<li>Redis</li>
-				<li>MySQL</li>
-				<li>Elasticsearch</li>
-				<li>S3</li>
+			<li>Elasticsearch</li>
+			<li>MySQL</li>
+			<li>PostgreSQL</li>
+			<li>Redis - S3</li>
+			</ul></li>
+			<li><a href="https://www.cloud.service.gov.uk/observability">observability for your apps</a> including support for logs, metrics and tracing.</li>
 			</ul>
 
-			<h2 id="self-service-provisioning" class="heading-medium">Self-service Provisioning</h2>
+
+			<p>GOV.UK PaaS users can use the <a href="https://docs.cloud.service.gov.uk/get_started.html#set-up-the-cloud-foundry-command-line">Cloud Foundry command line interface</a> (or API) to:</p>
 			<ul class="list list-bullet">
-				<li>it takes a few minutes to create sandbox and testing environments, and even less to delete them once you don’t need them anymore</li>
-				<li>set up a new DB or service in minutes with the CloudFoundry command line or an API: no tickets or requests required</li>
-				<li>service teams can grow their service from prototype to production without replatforming</li>
-				<li>a pricing calculator is available to anticipate ongoing costs, and to assist with planning for scaling apps</li>
-			</ul>
-			<h2 id="deploying-and-running-apps" class="heading-medium">Deploying and running apps</h2>
-			<ul class="list list-bullet">
-				<li>manage applications with the CloudFoundry command line or API</li>
+				<li>manage applications</li>
+				<li>attach backing services to applications</li>
 				<li>scale applications up and down in seconds</li>
-				<li>use private applications to deploy microservices that are not accessible from the public internet</li>
-				<li>you can build on the API or the command line to enable auto-scaling</li>
-				<li>deploy from CI services such as Travis, Jenkins or Concourse</li>
-				<li>use a custom domain to host your app</li>
-			</ul>
-			<h2 id="performance" class="heading-medium">Performance</h2>
-			<ul class="list list-bullet">
-				<li>you can check the status of the platform on our <a href="https://status.cloud.service.gov.uk/">system status page</a></li>
-				<li>application logs can be streamed to SaaS logging platforms if service teams need to monitor app-specific performance metrics</li>
-				<li>service metrics can be captured from backing services</li>
+				<li>create private applications to deploy microservices that are not accessible from the public internet</li>
+				<li>automate repeatable creation of environments</li>
+				<li>perform zero-downtime application deployments</li>
 			</ul>
 
-			<h2 id="support-and-maintenance" class="heading-medium">Support and maintenance</h2>
-			<p>the GOV.UK PaaS team provides platform-level support 24/7. If your team is experiencing any issue using the platform we can provide assistance during office hours.</p>
-			<p>the GOV.UK PaaS team is in charge of monitoring the infrastructure, and patching operating systems and infrastructure components. We use zero downtime deploys, so upgrades to the PaaS won't interfere with the running of your application.</p>
+			<h2 class="heading-medium">Manage user access, services and costs</h2>
+
+			<p>Our simple to use admin tool gives you an easy way to oversee your applications, services users and billing.</p>
+
+			<p>We provide:</p>
+			<ul class="list list-bullet">
+			  <li>simplified user account management and support for single sign-on with your organisation’s Google and Microsoft accounts</li>
+			  <li>usage and billing summaries in real time</li>
+			  <li>monitoring for your backing services and application events “out of the box”</li>
+			</ul>
+
+
+			<h2 class="heading-medium">Build services more securely</h2>
+
+			<p>GOV.UK PaaS is designed to meet the <a href="https://www.cloud.service.gov.uk/cloud-security-principles">NCSC Cloud Security Principles</a>.</p>
+
+			<p>The platform is assured for use at OFFICIAL. As the data owner for a service <a href="https://www.gov.uk/guidance/official-sensitive-data-and-it">you must ensure that appropriate controls are in place when handling Official data</a>.</p>
+
+			<p>Security features we offer include:
+				<ul class="list list-bullet">
+				  <li>modern TLS standards enforced for all traffic entering the platform</li>
+				  <li>application isolation so that they can’t read or change each other's code, data or logs</li>
+				  <li>private internal network communication between applications</li>
+				  <li>authenticated SSH access to application containers to debug problems</li>
+				  <li>single sign-on through your organisation's Microsoft or Google accounts</li>
+				  <li>ingress to the platform protected by AWS Shield</li>
+				</ul>
+			</p>
+
+			<p><a href="https://www.cloud.service.gov.uk/security">Read more about how we keep GOV.UK PaaS secure</a></p>
+
+			<h2 class="heading-medium">Migrating to and from GOV.UK PaaS</h2>
+
+			<p>GOV.UK PaaS requires that your application is built to meet modern standards. It’s easier to migrate to GOV.UK PaaS if your application is “<a href="https://thenewstack.io/10-key-attributes-of-cloud-native-applications/">cloud native</a>” and built using <a href="https://docs.cloud.service.gov.uk/architecture.html#12-factor-application-principles/">12 factor application principles</a>.</p>
+
+			<p>This also makes it easier to move to other platforms if you decide you want to, especially if you move to another Cloud Foundry-based PaaS provider or container based platform.</p>
+
+			<h2 class="heading-medium">Support and maintenance</h2>
+
+			<p>We monitor the infrastructure and manage the patching of the platform’s operating systems and infrastructure components. When we update the platform, we use zero downtime deploys, so this won't interfere with the running of your application.</p>
+
+			<p>We offer 24/7 platform support for live services</p>
+
+			<p><a href="https://www.cloud.service.gov.uk/support-and-response-times">Read about the support we offer</a></p>
 
 		</div>
 	</div>

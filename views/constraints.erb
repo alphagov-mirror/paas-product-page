@@ -1,0 +1,38 @@
+<% content_for :head do %>
+	<title>development - <%= settings.title %></title>
+<% end %>
+
+<% content_for :breadcrumb do %>
+	<%== erb :'partials/_breadcrumb', :locals => {name: 'Features, roadmap and security', href: request.path_info, active: true} %>
+<% end %>
+
+<div class="container">
+	<div class="grid-row">
+		<div class="column-one-third">
+			<%== erb :'partials/_subnav', :locals => {active: 'constraints'} %>
+		</div>
+
+		<div class="column-two-thirds">
+			<h1 class="heading-xlarge">Constraints</h1>
+			<p>These are things we do not currently support. However, we are continually evolving our <a href="https://www.cloud.service.gov.uk/roadmap">roadmap</a> to meet the needs of our users, so if there is a feature here you need please let us know by contacting <a href="mailto:gov-uk-paas-support@digital.cabinet-office.gov.uk">gov-uk-paas-support@digital.cabinet-office.gov.uk</a>.</p>
+			<h2 class="heading-medium">Autoscaling</h2>
+			<p>The platform does not support autoscaling of tenant applications “out of the box”. However tenants are able to automate the scaling of their applications by using the command line interface or API.</p>
+			<h2 class="heading-medium">Continuous Integration</h2>
+			<p>The platform does not come with a CI/CD service but you are able to use industry standard tooling for this. <a href="https://docs.cloud.service.gov.uk/using_ci.html#configuring-a-continuous-integration-ci-tool">Read about how you can configure your own CI tooling to work with GOV.UK PaaS</a>.</p>
+			<h2 class="heading-medium">Functions as a service</h2>
+			<p>GOV.UK PaaS does not currently support the Functions as a Service programming model.</p>
+			<h2 class="heading-medium">Graphics processing unit (GPU) support</h2>
+			<p>Some machine learning workloads require the use of specific Amazon machine instance types that support hardware Graphics processing units (GPUs).</p>
+			<p>GOV.UK PaaS does not support GPUs.</p>
+			<h2 class="heading-medium">Identity provider</h2>
+			<p>GOV.UK PaaS does not provide an identity provider for use in tenant applications.</p>
+			<h2 class="heading-medium">Public Service Network (PSN)</h2>
+			<p>The platform does not support connection to the <a href="https://www.gov.uk/government/groups/public-services-network">Public Services Network</a>.</p>
+			<h2 class="heading-medium">Virtual machines</h2>
+			<p>We do not offer hosting for virtual machines.</p>
+			<h2 class="heading-medium">Windows</h2>
+			<p>GOV.UK PaaS runs on an Ubuntu Bionic 18.04 linux kernel and does not runtime support for Windows binaries.</p>
+			<p>You may deploy <a href="https://docs.cloudfoundry.org/buildpacks/dotnet-core/index.html">.NET Core</a> applications via a buildpack.</p>
+		</div>
+	</div>
+</div>
