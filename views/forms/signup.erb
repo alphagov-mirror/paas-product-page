@@ -68,7 +68,7 @@
 				<div class="step step--about-you step--all">
 					<h2 class="heading-medium">Your details</h2>
 					<%== input_for(@form, :person_name, label: 'Name') %>
-					<%== input_for(@form, :person_email, label: 'Email address', hint: 'Must be from a government organisation') %>
+					<%== input_for(@form, :person_email, label: 'Email address', hint: 'Must be from a government organisation or public body') %>
 					<div class="form-group">
 						<input type="hidden" name="step" value="step--create-organisation">
 						<button class="button step-button" style="display:none;">Continue</button>

@@ -113,7 +113,11 @@ $(function(){
 				return 'Must be a valid email address';
 			}
 			if (!isGovEmail(value)) {
-				return 'We can only accept requests from .gov.uk, .mod.uk, nhs.net, nhs.uk, .police.uk or police.uk email addresses';
+				return `
+					This form only accepts .gov.uk, .mod.uk, nhs.net, nhs.uk, .police.uk or police.uk email addresses.
+					<br/><br/>
+					If you work for a government organisation or public body with a different email address, please contact us on <a class="govuk-link" href="mailto:gov-uk-paas-support@digital.cabinet-office.gov.uk">gov-uk-paas-support@digital.cabinet-office.gov.uk</a>
+				`;
 			}
 		} else if (name == 'department_name') {
 			if (isBlank(value)) {
@@ -148,7 +152,7 @@ $(function(){
 		for (var k in errs) {
 			var group = parent.find('input[name=' + k + ']').parents('.form-group');
 			group.addClass('form-group-error');
-			group.find('.error-message').text(errs[k]);
+			group.find('.error-message').html(errs[k]);
 			hasErrors = true;
 			console.error(k, errs[k]);
 		}
