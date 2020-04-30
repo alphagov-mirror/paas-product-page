@@ -81,7 +81,7 @@ class App < Sinatra::Base
 				erb :'forms/thanks'
 			rescue => ex
 				status 500
-				@errors[:fatal] = [ex.to_s]
+				@errors[:fatal] = [Forms::UNKNOWN_ERROR_MESSAGE]
 				erb :'forms/contact-us'
 			end
 		end
@@ -123,7 +123,7 @@ class App < Sinatra::Base
 				erb :'forms/thanks'
 			rescue => ex
 				status 500
-				@errors[:fatal] = [ex.to_s]
+				@errors[:fatal] = [Forms::UNKNOWN_ERROR_MESSAGE]
 				erb :'forms/signup'
 			end
 		end
@@ -217,7 +217,7 @@ class App < Sinatra::Base
 				end
 			rescue => ex
 				status 500
-				@errors[:fatal] = [ex.to_s]
+				@errors[:fatal] = [Forms::UNKNOWN_ERROR_MESSAGE]
 				erb(path.to_sym)
 			end
 		end

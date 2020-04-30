@@ -2,6 +2,7 @@ require './models/model'
 
 module Forms
 	VALID_EMAIL_REGEX = /.+@.+\..+/
+	UNKNOWN_ERROR_MESSAGE = "Your request could not be submitted through this form. Please email govuk-paas-support@digital.cabinet-office.gov.uk directly."
 
 	class GenericContact < Model
 		MAX_FIELD_LEN = 2048
