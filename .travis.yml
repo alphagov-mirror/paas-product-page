@@ -1,4 +1,4 @@
-dist: trusty
+dist: xenial
 rvm:
   - '2.5.3'
 
