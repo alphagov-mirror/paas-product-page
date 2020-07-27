@@ -1,5 +1,12 @@
 # GOV.UK PaaS Product Page
 
+⚠️ This repository is the old iteration of the product pages.
+The new product pages are located at
+[alphagov/paas-product-pages](https://github.com/alphagov/paas-product-pages)
+⚠️
+
+---
+
 This is the source for the PaaS product page at https://www.cloud.service.gov.uk/
 
 It is a Ruby/Sinatra app that makes use of the GOV.UK Elements, Frontend Toolkit and Template libraries.
